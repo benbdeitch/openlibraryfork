@@ -1,8 +1,10 @@
-def with():
+$def with(q = "")
 
 
 <details open>
-    <summary>Input</summary>
+    <summary>Input
+
+    </summary>
     <div>
       <textarea id="text"></textarea>
       <br />
@@ -13,7 +15,8 @@ def with():
         <option value="/^(?<title>[A-Za-z].{1,250})\s\(?<author>(.{3,70})\)$$/gm">e.g. "The Wizard of Oz (L. Frank Baum)"</option>
         <option value="/^(?<author>[^.()]+).*?\)\. (?<title>[^.]+)/gm">Wikipedia Citation (e.g. Baum, Frank L. (1994). The Wizard of Oz)</option>
         <option value="ai">✨ AI Extraction</option>
-      </select></label>
+      </select>
+      </label>
       <label>Sample Data: <select id="sample-data" onchange="useSample()">
         <option>Choose sample...</option>
         <option value="sample-data--ted-78">TED’s 2018 winter reading list</option>
