@@ -24,6 +24,7 @@ from openlibrary.plugins.upstream.utils import (
     get_language_name,
     urlencode,
 )
+
 from openlibrary.plugins.worksearch.schemes.editions import EditionSearchScheme
 from openlibrary.plugins.worksearch.search import get_solr
 from openlibrary.plugins.worksearch.schemes import SearchScheme
@@ -846,12 +847,14 @@ def setup():
         subjects,
         languages,
         publishers,
+        bulk_search,
     )
 
     autocomplete.setup()
     subjects.setup()
     publishers.setup()
     languages.setup()
+    bulk_search.setup()
 
 
 setup()
