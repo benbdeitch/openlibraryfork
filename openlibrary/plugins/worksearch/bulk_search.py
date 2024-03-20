@@ -10,5 +10,8 @@ class bulk_search(delegate.page):
 
     def GET(self):
         i = web.input(q='')
-        # return render['bulk_search/demo']()
-        return "hello"
+        return render['bulk_search/demo'](q=i)
+
+
+def setup():
+    pass
