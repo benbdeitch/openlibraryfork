@@ -1,8 +1,8 @@
 import Vue from 'vue'
-import HelloWorld from './HelloWorld.vue'
+import BulkSearch from './BulkSearch.vue'
 
 Vue.config.productionTip = false
 
 new Vue({
-    render: h => h(HelloWorld),
+    render: h => h(BulkSearch),
 }).$mount('#app')
