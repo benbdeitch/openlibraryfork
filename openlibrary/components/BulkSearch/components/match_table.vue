@@ -11,17 +11,12 @@ export default {
     props: {
         bulkSearchState: BulkSearchState
     },
-    computed: {
-        entries(){
-            return Object.keys(this.bulkSearchState.extractedBooks)
-        }
-    }
 }</script>
 
 
 <template>
   <div>
-    <table  v-if="entries.length" id="results">
+    <table  :v-if= "this.bulkSearchState.matchedBooks" id="results">
   <thead>
     <tr>
       <th>i</th>
@@ -31,7 +26,7 @@ export default {
     </tr>
   </thead>
   <tbody>
-    <TableRow v-for= "value, key in bulkSearchState.extractedBooks" :book="value"  :bulkSearchState= "bulkSearchState"  :key="key" />
+    <TableRow v-for= "bookMatch,index  in this.bulkSearchState.matchedBooks" :bookMatch = "bookMatch" :index="index" :bulkSearchState= "bulkSearchState"  :key="index" />
   </tbody>
   <tfoot>
     <tr>

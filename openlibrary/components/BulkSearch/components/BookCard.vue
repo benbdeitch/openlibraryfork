@@ -24,16 +24,25 @@ export default {
     props: {
         doc: Object
     },
-    computed: {
-        coverImageURL(){
-            const id = this.doc.cover_i
-            return `https://covers.openlibrary.org/b/id/${id}-M.jpg`
-        },
-        workUrl(){
-            const key = this.doc.key.split('/')[2]
-            return `https://openlibrary.org/books/${key}`
+    data() {
+        return {
+            coverImageUrl: '',
+            workUrl: ''
         }
-    }
+    },
+    watch: {
+        doc: {
+            handler() {
+                if (this.doc.cover_i) {
+                    this.coverImageUrl = `https://covers.openlibrary.org/b/id/${this.doc.cover_i}-M.jpg`
+                }
+                if (this.doc.key) {
+                    this.workUrl = `https://openlibrary.org/books/${this.doc.key.split('/')[2]}`
+                }
+            },
+            immediate: true
+        }
+    },
 }</script>
 
 

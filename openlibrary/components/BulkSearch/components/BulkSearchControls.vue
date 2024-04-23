@@ -2,7 +2,7 @@
 <script>
 
 import sampleBar from './sample_bar.vue'
-import {BulkSearchState, IdToExtractedBook, IdToBookMatch, ExtractedBook, BookMatch} from '../utils/classes.js';
+import {BulkSearchState, ExtractedBook, BookMatch} from '../utils/classes.js';
 import {searchUrl} from '../utils/searchUtils.js'
 export default {
 
@@ -31,14 +31,10 @@ export default {
 
             const regex = this.bulkSearchState.extractionOptions.extractionAlgorithm.regex
             if (regex && this.bulkSearchState.inputText){
-                let data = [...this.bulkSearchState.inputText.matchAll(regex)]
+                const data = [...this.bulkSearchState.inputText.matchAll(regex)]
 
-                data = data.map((entry, index) =>  new ExtractedBook(entry.groups?.title, entry.groups?.author, index))
-                const extractedBooks = new IdToExtractedBook()
-                for (let i = 0; i<data.length; i++){
-                    extractedBooks[i] = data[i]
-                }
-                this.bulkSearchState.extractedBooks = extractedBooks
+                this.bulkSearchState.extractedBooks = data.map((entry) =>  new ExtractedBook(entry.groups?.title, entry.groups?.author))
+                this.bulkSearchState.matchedBooks = this.bulkSearchState.extractedBooks.map((entry) => new BookMatch(entry, []))
             }
         },
         async matchBooks(){
@@ -54,13 +50,11 @@ export default {
                 }
 
             }
-            const matchedBooks = new IdToBookMatch()
-            for (const key in Object.keys(this.bulkSearchState.extractedBooks)){
-                const book = this.bulkSearchState.extractedBooks[key]
-                const solrDocs = await fetchSolrBook(book, this.bulkSearchState.matchOptions)
-                matchedBooks[book.index] = new BookMatch(book, solrDocs.docs, book.index)
+
+            for (const bookMatch of this.bulkSearchState.matchedBooks) {
+                bookMatch.solrDocs = await fetchSolrBook(bookMatch.extractedBook, this.bulkSearchState.matchOptions)
+
             }
-            this.bulkSearchState.matchedBooks = matchedBooks
         },
 
     }

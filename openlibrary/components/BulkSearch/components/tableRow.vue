@@ -1,7 +1,7 @@
 
 
 <script>
-import {BulkSearchState, ExtractedBook} from '../utils/classes.js'
+import {BulkSearchState, BookMatch} from '../utils/classes.js'
 import {searchUrl} from '../utils/searchUtils.js'
 import BookCard from './BookCard.vue'
 export default {
@@ -10,7 +10,8 @@ export default {
     },
     props: {
         bulkSearchState: BulkSearchState,
-        book: ExtractedBook,
+        bookMatch: BookMatch,
+        index: Number
 
     },
 
@@ -21,11 +22,7 @@ export default {
     },
     computed: {
         searchUrlVue(){
-            return searchUrl(this.book, this.bulkSearchState.matchOptions, false)
-        },
-        bookMatch(){
-            return this.bulkSearchState.matchedBooks? this.bulkSearchState.matchedBooks[this.book.index] : {solrDocs: []}
-
+            return searchUrl(this.bookMatch.extractedBook, this.bulkSearchState.matchOptions, false)
         }
     }
 
@@ -35,13 +32,15 @@ export default {
 
 <template>
 <tr>
-    <td>{{book.index+1}}</td>
-    <td>{{book.title}}</td>
-    <td>{{book.author}}</td>
+    <td>{{index+1}}</td>
+    <td>{{bookMatch.extractedBook.title}}</td>
+    <td>{{bookMatch.extractedBook.author}}</td>
       <td class="bookCards">
         <a :href="searchUrlVue">L</a>
-        <div v-if="!bookMatch?.solrDocs" class="empty"></div>
-    <BookCard v-for="doc, index in bookMatch?.solrDocs" :doc="doc" :key ="index" /></td>
+
+    <BookCard v-for="(doc, index) in bookMatch.solrDocs.docs" :doc="doc" :key ="index" />
+
+    </td>
 </tr>
 </template>
 
