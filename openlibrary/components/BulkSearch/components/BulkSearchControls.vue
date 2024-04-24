@@ -14,7 +14,7 @@ export default {
     },
     data() {
         return {
-            textArea: '',
+
             regexDict: {
                 '': '',
                 1: /(^|>)(?<title>[A-Za-z][A-Za-z0-9\- ,]{1,250})\s+(by|[-–—])\s+(?<author>[A-Za-z][A-Za-z.\- ]{3,70})( \(.*)?($|<\/)/gm,
@@ -67,14 +67,14 @@ export default {
 
 
 <template>
-    <div class="page">
+    <details open>
 
         <summary>Input</summary>
   <div>
-    <textarea ref="textArea" v-model="bulkSearchState.inputText" id="text"></textarea>
+    <textarea  v-model="bulkSearchState.inputText"></textarea>
     <br />
 
-    <label>Format: <select id="regex" @change="selectAlgorithm">
+    <label>Format: <select @change="selectAlgorithm">
       <!-- order matters and is referenced in JS, useSample! -->
       <option value="1">e.g. "The Wizard of Oz by L. Frank Baum"</option>
       <option value="2">e.g. "The Wizard of Oz (L. Frank Baum)"</option>
@@ -91,7 +91,7 @@ export default {
     <button @click="extractBooks">Extract Books</button>
     <button @click="matchBooks">Match Books</button>
   </div>
-</div>
+</details>
 </template>
 
 <style lang="less">
