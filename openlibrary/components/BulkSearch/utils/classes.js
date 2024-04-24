@@ -1,4 +1,4 @@
-class ExtractedBook {
+export class ExtractedBook {
     constructor(title = '', author = '') {
         /** @type {string} */
         this.title = title;
@@ -26,7 +26,7 @@ class MatchOptions  {
         this.includeAuthor = true;
     }
 }
-class BookMatch {
+export class BookMatch {
     constructor(extractedBook, solrDocs){
         /** @type {ExtractedBook} */
         this.extractedBook = extractedBook;
@@ -37,7 +37,7 @@ class BookMatch {
 
 
 
-class BulkSearchState{
+export class BulkSearchState{
     constructor(){
         /** @type {string} */
         this.inputText= '';
@@ -53,4 +53,4 @@ class BulkSearchState{
 
 }
 
-export {BulkSearchState, ExtractedBook, BookMatch}
+
