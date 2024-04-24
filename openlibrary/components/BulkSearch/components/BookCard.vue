@@ -2,7 +2,7 @@
 
 <div class="book-card">
           <div class="cover">
-            <img :src="coverImageUrl">
+            <img :src="coverImage">
           </div>
           <div class="info">
             <a class="title" :href="workUrl" target="_blank">{{ doc.title }}</a>
@@ -24,25 +24,17 @@ export default {
     props: {
         doc: Object
     },
-    data() {
-        return {
-            coverImageUrl: '',
-            workUrl: ''
+    computed: {
+        coverImage() {
+            if (!this.doc.cover_i){
+                return ''
+            }
+            return `https://covers.openlibrary.org/b/id/${this.doc.cover_i}-M.jpg`
+        },
+        workUrl() {
+            return `https://openlibrary.org/books/${this.doc.key.split('/')[2]}`
         }
-    },
-    watch: {
-        doc: {
-            handler() {
-                if (this.doc.cover_i) {
-                    this.coverImageUrl = `https://covers.openlibrary.org/b/id/${this.doc.cover_i}-M.jpg`
-                }
-                if (this.doc.key) {
-                    this.workUrl = `https://openlibrary.org/books/${this.doc.key.split('/')[2]}`
-                }
-            },
-            immediate: true
-        }
-    },
+    }
 }</script>
 
 
