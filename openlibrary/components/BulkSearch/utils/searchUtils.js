@@ -1,7 +1,7 @@
 
 const OL_SEARCH_BASE = 'openlibrary.org'
 
-function searchUrl(extractedBook, matchOptions, json = true) {
+export function buildSearchUrl(extractedBook, matchOptions, json = true) {
     let title = extractedBook.title?.split(/[:(?]/)[0].replace(/’/g, '\'');
     const author = extractedBook.author
     title = title.replace(/^the\b/i, '').trim();
@@ -21,6 +21,4 @@ function searchUrl(extractedBook, matchOptions, json = true) {
     return url;
 }
 
-export {
-    searchUrl
-}
+
