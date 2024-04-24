@@ -1,9 +1,10 @@
 class ExtractedBook {
     constructor(title = '', author = '') {
-        this.title = title;
         /** @type {string} */
-        this.author = author;
+        this.title = title;
         /**@type {string} */
+        this.author = author;
+
     }
 }
 
@@ -27,10 +28,10 @@ class MatchOptions  {
 }
 class BookMatch {
     constructor(extractedBook, solrDocs){
-        this.extractedBook = extractedBook;
         /** @type {ExtractedBook} */
-        this.solrDocs = solrDocs
+        this.extractedBook = extractedBook;
         /** @type {SolrDoc[]} */
+        this.solrDocs = solrDocs
     }
 }
 
@@ -38,16 +39,16 @@ class BookMatch {
 
 class BulkSearchState{
     constructor(){
-        this.inputText= '';
         /** @type {string} */
-        this.extractedBooks = [];
+        this.inputText= '';
         /** @type {extractedBooks[]} */
-        this.matchedBooks = [];
+        this.extractedBooks = [];
         /** @type {BookMatch[]} */
-        this.matchOptions =  new MatchOptions()
+        this.matchedBooks = [];
         /** @type {MatchOptions} */
-        this.extractionOptions = new ExtractionOptions();
+        this.matchOptions =  new MatchOptions()
         /** @type {ExtractedOptions} */
+        this.extractionOptions = new ExtractionOptions();
     }
 
 }
