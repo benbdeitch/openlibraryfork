@@ -3,7 +3,7 @@
 
 import sampleBar from './sample_bar.vue'
 import {BulkSearchState, ExtractedBook, BookMatch} from '../utils/classes.js';
-import {searchUrl} from '../utils/searchUtils.js'
+import {buildSearchUrl} from '../utils/searchUtils.js'
 export default {
 
     components: {
@@ -42,7 +42,7 @@ export default {
 
                 try {
 
-                    const data = await fetch(searchUrl(book, matchOptions, true))
+                    const data = await fetch(buildSearchUrl(book, matchOptions, true))
                     return await data.json()
                 }
                 catch (error) {
