@@ -36,7 +36,7 @@ export default {
     <td>{{bookMatch.extractedBook.title}}</td>
     <td>{{bookMatch.extractedBook.author}}</td>
       <td class="bookCards">
-        <a :href="searchUrlVue">L</a>
+        <a :href="searchUrl">L</a>
 
     <BookCard v-for="(doc, index) in bookMatch.solrDocs.docs" :doc="doc" :key ="index" />
 
