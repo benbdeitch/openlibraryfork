@@ -41,7 +41,7 @@ export class BulkSearchState{
     constructor(){
         /** @type {string} */
         this.inputText= '';
-        /** @type {extractedBooks[]} */
+        /** @type {ExtractedBooks[]} */
         this.extractedBooks = [];
         /** @type {BookMatch[]} */
         this.matchedBooks = [];
