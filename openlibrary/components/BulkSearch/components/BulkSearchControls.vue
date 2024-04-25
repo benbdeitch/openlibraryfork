@@ -1,7 +1,7 @@
 
 <script>
 
-import sampleBar from './sample_bar.vue'
+import sampleBar from './SampleBar.vue'
 import {BulkSearchState, ExtractedBook, BookMatch} from '../utils/classes.js';
 import {buildSearchUrl} from '../utils/searchUtils.js'
 export default {
@@ -82,10 +82,7 @@ export default {
     </select></label>
     <sampleBar @sample="(msg) => this.bulkSearchState.inputText = msg"/>
     <label>
-      <input id="use-author" checked v-model="bulkSearchState.matchOptions.includeAuthor" type="checkbox"  /> Use author in search query
-    </label>
-    <label>
-      <input id="is-list" v-model="bulkSearchState.extractionOptions.isBookList" type="checkbox"/> Input is a list of books (i.e. each line is a book)
+      <input checked v-model="bulkSearchState.matchOptions.includeAuthor" type="checkbox"  /> Use author in search query
     </label>
     <br>
     <button @click="extractBooks">Extract Books</button>
