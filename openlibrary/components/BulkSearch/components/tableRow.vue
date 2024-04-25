@@ -2,7 +2,7 @@
 
 <script>
 import {BulkSearchState, BookMatch} from '../utils/classes.js'
-import {searchUrl} from '../utils/searchUtils.js'
+import {buildSearchUrl} from '../utils/searchUtils.js'
 import BookCard from './BookCard.vue'
 export default {
     components: {
@@ -21,8 +21,8 @@ export default {
         }
     },
     computed: {
-        searchUrlVue(){
-            return searchUrl(this.bookMatch.extractedBook, this.bulkSearchState.matchOptions, false)
+        searchUrl(){
+            return buildSearchUrl(this.bookMatch.extractedBook, this.bulkSearchState.matchOptions, false)
         }
     }
 
