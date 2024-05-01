@@ -1,5 +1,6 @@
 """Generic helper functions to use in the templates and the webapp.
 """
+
 import json
 import re
 from datetime import datetime, date
@@ -49,6 +50,7 @@ __all__ = [
     "bookreader_host",
     "private_collections",
     "private_collection_in",
+    "extract_year",
     # functions imported from elsewhere
     "parse_datetime",
     "safeint",
@@ -321,6 +323,14 @@ def private_collections():
 
 def private_collection_in(collections):
     return any(x in private_collections() for x in collections)
+
+
+def extract_year(input):
+    """Extracts the year from an author's birth or death date."""
+    if result := re.search(r'\d{4}', input):
+        return result.group()
+    else:
+        return ''
 
 
 def _get_helpers():
