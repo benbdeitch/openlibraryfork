@@ -323,7 +323,7 @@ $jsdef render_work_autocomplete_item(item):
                 <span class="tip">$_("Only if it's different from the work's description")</span>
             </div>
             <div class="input">
-                <textarea name="edition--description" id="edition-description" rows="3" cols="50">$book.description</textarea>
+                <textarea name="edition--description" class="markdown" id="edition-description" rows="3" cols="50">$book.description</textarea>
             </div>
         </div>
 
@@ -557,7 +557,7 @@ $ })
                 </div>
                 <div class="input">
                     <input name="edition--number_of_pages" type="number"
-                        step="1" id="edition--number_of_pages" value="$book.number_of_pages"/>
+                        step="1" min="1" id="edition--number_of_pages" value="$book.number_of_pages"/>
                 </div>
             </div>
             <div class="formElement">
@@ -599,7 +599,7 @@ $ })
                         <table cellpadding="1">
                         <tbody>
                             <tr>
-                                <td rowspan="3"><img src="/images/dimensions.png" alt="dimensions" width="107" height="69" align="left"/></td>
+                                <td rowspan="3"><img src="/images/dimensions.png" alt="$_('dimensions')" width="107" height="69" align="left"/></td>
                                 <td><span class="tip"><label for="dimensions-height">$_("Height:")</label> </span></td>
                                 <td><input name="edition--physical_dimensions--height" type="number" step="any"
                                            id="dimensions-height" size="6" value="$dimensions.height"/></td>

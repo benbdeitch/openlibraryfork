@@ -60,7 +60,6 @@ ignore = [
   "PT021",
   "RSE102",
   "RUF001",
-  "RUF002",
   "RUF005",
   "RUF012",
   "RUF100",
@@ -189,6 +188,3 @@ max-statements = 70
 "scripts/sitemaps/sitemap.py" = ["BLE001"]
 "scripts/solr_builder/solr_builder/solr_builder.py" = ["PYI024", "PLR0913"]
 "tests/*" = ["S101"]
-"tests/integration/__init__.py" = ["E722"]
-"tests/integration/test_loans.py" = ["E722"]
-

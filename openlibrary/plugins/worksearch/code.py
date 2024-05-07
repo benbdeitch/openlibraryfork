@@ -338,6 +338,8 @@ def get_doc(doc: SolrDocument):
                 key=key,
                 name=name,
                 url=f"/authors/{key}/{urlsafe(name or 'noname')}",
+                birth_date=doc.get('birth_date', None),
+                death_date=doc.get('death_date', None),
             )
             for key, name in zip(doc.get('author_key', []), doc.get('author_name', []))
         ],
@@ -482,7 +484,7 @@ class search(delegate.page):
             'time',
             'editions.sort',
         } | WorkSearchScheme.facet_fields:
-            if p in web_input and web_input[p]:
+            if web_input.get(p):
                 param[p] = web_input[p]
         if list(param) == ['has_fulltext']:
             param = {}

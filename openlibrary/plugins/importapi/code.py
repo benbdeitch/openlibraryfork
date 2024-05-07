@@ -1,5 +1,6 @@
 """Open Library Import API
 """
+
 from infogami.plugins.api.code import add_hook
 from infogami.infobase.client import ClientException
 
@@ -17,7 +18,7 @@ from openlibrary.plugins.upstream.utils import (
     LanguageMultipleMatchError,
     get_location_and_publisher,
 )
-from openlibrary.utils.isbn import get_isbn_10_and_13
+from openlibrary.utils.isbn import get_isbn_10s_and_13s
 
 import web
 
@@ -343,7 +344,7 @@ class ia_importapi(importapi):
         if description:
             d['description'] = description
         if unparsed_isbns:
-            isbn_10, isbn_13 = get_isbn_10_and_13(unparsed_isbns)
+            isbn_10, isbn_13 = get_isbn_10s_and_13s(unparsed_isbns)
             if isbn_10:
                 d['isbn_10'] = isbn_10
             if isbn_13:
