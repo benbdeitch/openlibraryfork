@@ -8,17 +8,13 @@ export class ExtractedBook {
     }
 }
 
-class ExtractionAlgorithm{
-    constructor(option = ''){
-        this.regex = ''
-        this.option= option
-    }
-}
+
 
 class ExtractionOptions {
     constructor() {
-        this.isBookList = false;
-        this.extractionAlgorithm = new ExtractionAlgorithm()
+        this.use_gpt = false
+        this.api_key = ''
+        this.regex = ''
     }
 }
 class MatchOptions  {
@@ -49,6 +45,7 @@ export class BulkSearchState{
         this.matchOptions =  new MatchOptions()
         /** @type {ExtractedOptions} */
         this.extractionOptions = new ExtractionOptions();
+        this.errorMessage = []
     }
 
 }
