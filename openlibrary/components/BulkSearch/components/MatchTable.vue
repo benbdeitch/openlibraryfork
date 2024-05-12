@@ -15,7 +15,7 @@ export default {
 
 
 <template>
-  <div>
+  <div class="tableWrapper">
     <table  :v-if= "this.bulkSearchState.matchedBooks">
   <thead>
     <tr>
@@ -41,6 +41,10 @@ export default {
 </template>
 
 <style>
-table { border-collapse: collapse; }
+table { border-collapse: collapse;}
+.tableWrapper{
+  max-width:100%;
+  overflow-x: auto;
 
+}
 </style>
