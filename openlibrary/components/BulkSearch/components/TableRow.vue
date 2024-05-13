@@ -35,11 +35,12 @@ export default {
     <td>{{index+1}}</td>
     <td>{{bookMatch.extractedBook.title}}</td>
     <td>{{bookMatch.extractedBook.author}}</td>
-      <td class="bookCards">
+      <td>
+        <div  class="bookCards">
         <a :href="searchUrl">L</a>
 
     <BookCard v-for="(doc, index) in bookMatch.solrDocs.docs" :doc="doc" :key ="index" />
-
+        </div>
     </td>
 </tr>
 </template>
@@ -51,23 +52,8 @@ export default {
   font-family: Roboto, sans-serif;
   display: flex;
   flex-direction: row;
-  overflow-x: auto;
-  overflow-y: hidden;
+  align-items: center;
+  
 
-  .empty {
-    display: none;
-    &:first-child:last-child {
-      display: flex;
-    }
-    width: 80vw;
-    max-width: 300px;
-    height: 80px;
-    border: 1px dashed;
-    justify-content: center;
-    align-items: center;
-    vertical-align: center;
-    flex-shrink: 0;
-    border-radius: 4px;
-  }
 }
 </style>
